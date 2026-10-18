@@ -22,13 +22,18 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 app = FastAPI(title="CU FDE2 Kanban API")
 
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=[
+        "http://localhost:5173",
+        "https://cu-fde2-kanban.6838145721.workers.dev",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 Status = Literal["todo", "doing", "done"]
 
