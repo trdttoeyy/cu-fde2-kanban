@@ -10,7 +10,7 @@ type Task = {
   status: Status
 }
 
-const API_URL = 'http://127.0.0.1:8000'
+const API_URL = 'https://cu-fde2-kanban-api.onrender.com'
 
 const columns: { status: Status; title: string; subtitle: string }[] = [
   { status: 'todo', title: 'To do', subtitle: 'Ready when you are' },
