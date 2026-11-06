@@ -1,4 +1,3 @@
-from fastapi.middleware.cors import CORSMiddleware
 import os
 from pathlib import Path
 from typing import Literal
@@ -66,9 +65,9 @@ def list_cards():
             .execute()
         )
         return result.data
-    except Exception:
+    except Exception as e:
+        print("load cards error:", repr(e))
         raise HTTPException(
-            print("load cards error:", repr(e))
             status_code=500, detail="Could not load cards from database"
         )
 
@@ -92,7 +91,8 @@ def create_card(data: CardCreate):
         return result.data[0]
     except HTTPException:
         raise
-    except Exception:
+    except Exception as e:
+        print("create card error:", repr(e))
         raise HTTPException(
             status_code=500, detail="Could not create card in database"
         )
@@ -116,7 +116,8 @@ def update_card(card_id: int, data: CardCreate):
         return result.data[0]
     except HTTPException:
         raise
-    except Exception:
+    except Exception as e:
+        print("update card error:", repr(e))
         raise HTTPException(
             status_code=500, detail="Could not update card in database"
         )
@@ -138,7 +139,8 @@ def delete_card(card_id: int):
         return Response(status_code=204)
     except HTTPException:
         raise
-    except Exception:
+    except Exception as e:
+        print("delete card error:", repr(e))
         raise HTTPException(
             status_code=500, detail="Could not delete card from database"
         )
