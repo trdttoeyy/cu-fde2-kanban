@@ -1,4 +1,4 @@
-
+from fastapi.middleware.cors import CORSMiddleware
 import os
 from pathlib import Path
 from typing import Literal
@@ -21,7 +21,6 @@ if not SUPABASE_URL or not SUPABASE_KEY:
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 app = FastAPI(title="CU FDE2 Kanban API")
-
 
 app.add_middleware(
     CORSMiddleware,
