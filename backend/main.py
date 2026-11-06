@@ -68,6 +68,7 @@ def list_cards():
         return result.data
     except Exception:
         raise HTTPException(
+            print("load cards error:", repr(e))
             status_code=500, detail="Could not load cards from database"
         )
 
